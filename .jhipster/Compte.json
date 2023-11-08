@@ -1,0 +1,69 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021005745",
+  "entityTableName": "compte",
+  "fields": [
+    {
+      "fieldName": "numeroCompte",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cloture",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Compte",
+  "relationships": [
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "compte",
+      "relationshipName": "transaction",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "soldeComptable",
+      "otherEntityRelationshipName": "compte",
+      "relationshipName": "soldeComptable",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "compteAttente",
+      "otherEntityRelationshipName": "compte",
+      "relationshipName": "compteAttente",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "compteTransfert",
+      "otherEntityRelationshipName": "compte",
+      "relationshipName": "compteTransfert",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "audit",
+      "otherEntityRelationshipName": "compte",
+      "relationshipName": "audit",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "compte",
+      "otherEntityName": "bilan",
+      "relationshipName": "bilan",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

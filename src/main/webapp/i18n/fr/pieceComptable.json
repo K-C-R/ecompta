@@ -1,0 +1,28 @@
+{
+  "eComptaApp": {
+    "pieceComptable": {
+      "home": {
+        "title": "PieceComptables",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Piece Comptable",
+        "createOrEditLabel": "Créer ou éditer un Piece Comptable",
+        "notFound": "Aucun Piece Comptable trouvé"
+      },
+      "created": "Un nouveau Piece Comptable a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Piece Comptable avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Piece Comptable avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Piece Comptable {{ id }} ?"
+      },
+      "detail": {
+        "title": "Piece Comptable"
+      },
+      "id": "ID",
+      "numeroPiece": "Numero Piece",
+      "datePiece": "Date Piece",
+      "description": "Description",
+      "comptes": "Comptes",
+      "transactions": "Transactions"
+    }
+  }
+}

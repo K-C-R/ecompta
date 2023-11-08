@@ -1,0 +1,31 @@
+{
+  "eComptaApp": {
+    "ecritureComptable": {
+      "home": {
+        "title": "EcritureComptables",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Ecriture Comptable",
+        "createOrEditLabel": "Créer ou éditer un Ecriture Comptable",
+        "notFound": "Aucun Ecriture Comptable trouvé"
+      },
+      "created": "Un nouveau Ecriture Comptable a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Ecriture Comptable avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Ecriture Comptable avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Ecriture Comptable {{ id }} ?"
+      },
+      "detail": {
+        "title": "Ecriture Comptable"
+      },
+      "id": "ID",
+      "date": "Date",
+      "montant": "Montant",
+      "libelle": "Libelle",
+      "typeEcriture": "Type Ecriture",
+      "reference": "Reference",
+      "autreInfos": "Autre Infos",
+      "pieces": "Pieces",
+      "compte": "Compte"
+    }
+  }
+}

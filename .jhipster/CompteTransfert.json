@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021010045",
+  "entityTableName": "compte_transfert",
+  "fields": [
+    {
+      "fieldName": "numeroCompte",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "CompteTransfert",
+  "relationships": [
+    {
+      "otherEntityField": "compteTransfert",
+      "otherEntityName": "compte",
+      "relationshipName": "compte",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

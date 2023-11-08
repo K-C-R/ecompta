@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ecritureComptable">
+      <h2 data-cy="ecritureComptableDetailsHeading">
+        <span jhiTranslate="eComptaApp.ecritureComptable.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.ecritureComptable.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ ecritureComptable.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.date">__jhiTransformTranslate__('eComptaApp.ecritureComptable.date')</span>
+        </dt>
+        <dd>
+          <span>{{ ecritureComptable.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.montant">__jhiTransformTranslate__('eComptaApp.ecritureComptable.montant')</span>
+        </dt>
+        <dd>
+          <span>{{ ecritureComptable.montant }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.libelle">__jhiTransformTranslate__('eComptaApp.ecritureComptable.libelle')</span>
+        </dt>
+        <dd>
+          <span>{{ ecritureComptable.libelle }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.typeEcriture"
+            >__jhiTransformTranslate__('eComptaApp.ecritureComptable.typeEcriture')</span
+          >
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'eComptaApp.TypeEcriture.' + ecritureComptable.typeEcriture }}">{{ ecritureComptable.typeEcriture }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.reference"
+            >__jhiTransformTranslate__('eComptaApp.ecritureComptable.reference')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ ecritureComptable.reference }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.autreInfos"
+            >__jhiTransformTranslate__('eComptaApp.ecritureComptable.autreInfos')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ ecritureComptable.autreInfos }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.pieces">__jhiTransformTranslate__('eComptaApp.ecritureComptable.pieces')</span>
+        </dt>
+        <dd>
+          <span>{{ ecritureComptable.pieces }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.ecritureComptable.compte">__jhiTransformTranslate__('eComptaApp.ecritureComptable.compte')</span>
+        </dt>
+        <dd>
+          <div *ngIf="ecritureComptable.compte">
+            <a [routerLink]="['/compte', ecritureComptable.compte.id, 'view']">{{ ecritureComptable.compte.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/ecriture-comptable', ecritureComptable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

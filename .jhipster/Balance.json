@@ -1,0 +1,29 @@
+{
+  "changelogDate": "20231023214940",
+  "entityTableName": "balance",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalsActifs",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "totalPassifs",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Balance",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "no"
+}

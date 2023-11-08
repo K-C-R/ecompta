@@ -1,0 +1,29 @@
+{
+  "eComptaApp": {
+    "journalDefinitif": {
+      "home": {
+        "title": "JournalDefinitifs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Journal Definitif",
+        "createOrEditLabel": "Créer ou éditer un Journal Definitif",
+        "notFound": "Aucun Journal Definitif trouvé"
+      },
+      "created": "Un nouveau Journal Definitif a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Journal Definitif avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Journal Definitif avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Journal Definitif {{ id }} ?"
+      },
+      "detail": {
+        "title": "Journal Definitif"
+      },
+      "id": "ID",
+      "date": "Date",
+      "description": "Description",
+      "montant": "Montant",
+      "reference": "Reference",
+      "compte": "Compte",
+      "balance": "Balance"
+    }
+  }
+}

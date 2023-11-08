@@ -1,0 +1,27 @@
+{
+  "eComptaApp": {
+    "balance": {
+      "home": {
+        "title": "Balances",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Balance",
+        "createOrEditLabel": "Créer ou éditer un Balance",
+        "notFound": "Aucun Balance trouvé"
+      },
+      "created": "Un nouveau Balance a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Balance avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Balance avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Balance {{ id }} ?"
+      },
+      "detail": {
+        "title": "Balance"
+      },
+      "id": "ID",
+      "date": "Date",
+      "description": "Description",
+      "totalsActifs": "Totals Actifs",
+      "totalPassifs": "Total Passifs"
+    }
+  }
+}

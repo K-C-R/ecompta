@@ -1,0 +1,165 @@
+<div>
+  <h2 id="page-heading" data-cy="JournalDefinitifHeading">
+    <span jhiTranslate="eComptaApp.journalDefinitif.home.title">__jhiTransformTranslate__('eComptaApp.journalDefinitif.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.journalDefinitif.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.journalDefinitif.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-journal-definitif"
+        [routerLink]="['/journal-definitif/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.journalDefinitif.home.createLabel"
+          >__jhiTransformTranslate__('eComptaApp.journalDefinitif.home.createLabel')</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="journalDefinitifs?.length === 0">
+    <span jhiTranslate="eComptaApp.journalDefinitif.home.notFound"
+      >__jhiTransformTranslate__('eComptaApp.journalDefinitif.home.notFound')</span
+    >
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="journalDefinitifs && journalDefinitifs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.journalDefinitif.date">__jhiTransformTranslate__('eComptaApp.journalDefinitif.date')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.journalDefinitif.description"
+                >__jhiTransformTranslate__('eComptaApp.journalDefinitif.description')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montant">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.journalDefinitif.montant"
+                >__jhiTransformTranslate__('eComptaApp.journalDefinitif.montant')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="reference">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.journalDefinitif.reference"
+                >__jhiTransformTranslate__('eComptaApp.journalDefinitif.reference')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compte.id">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.journalDefinitif.compte">__jhiTransformTranslate__('eComptaApp.journalDefinitif.compte')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="balance.id">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.journalDefinitif.balance"
+                >__jhiTransformTranslate__('eComptaApp.journalDefinitif.balance')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let journalDefinitif of journalDefinitifs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/journal-definitif', journalDefinitif.id, 'view']">{{ journalDefinitif.id }}</a>
+          </td>
+          <td>{{ journalDefinitif.date | formatMediumDatetime }}</td>
+          <td>{{ journalDefinitif.description }}</td>
+          <td>{{ journalDefinitif.montant }}</td>
+          <td>{{ journalDefinitif.reference }}</td>
+          <td>
+            <div *ngIf="journalDefinitif.compte">
+              <a [routerLink]="['/compte', journalDefinitif.compte.id, 'view']">{{ journalDefinitif.compte.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="journalDefinitif.balance">
+              <a [routerLink]="['/balance', journalDefinitif.balance.id, 'view']">{{ journalDefinitif.balance.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/journal-definitif', journalDefinitif.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/journal-definitif', journalDefinitif.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(journalDefinitif)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="journalDefinitifs && journalDefinitifs.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

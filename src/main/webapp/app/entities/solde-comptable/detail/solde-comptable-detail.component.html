@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="soldeComptable">
+      <h2 data-cy="soldeComptableDetailsHeading">
+        <span jhiTranslate="eComptaApp.soldeComptable.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.soldeComptable.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ soldeComptable.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.soldeComptable.solde">__jhiTransformTranslate__('eComptaApp.soldeComptable.solde')</span></dt>
+        <dd>
+          <span>{{ soldeComptable.solde }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.soldeComptable.compte">__jhiTransformTranslate__('eComptaApp.soldeComptable.compte')</span></dt>
+        <dd>
+          <div *ngIf="soldeComptable.compte">
+            <a [routerLink]="['/compte', soldeComptable.compte.id, 'view']">{{ soldeComptable.compte.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/solde-comptable', soldeComptable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

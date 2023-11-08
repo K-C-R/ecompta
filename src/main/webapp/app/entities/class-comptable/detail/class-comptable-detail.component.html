@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="classComptable">
+      <h2 data-cy="classComptableDetailsHeading">
+        <span jhiTranslate="eComptaApp.classComptable.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.classComptable.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ classComptable.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.classComptable.nom">__jhiTransformTranslate__('eComptaApp.classComptable.nom')</span></dt>
+        <dd>
+          <span>{{ classComptable.nom }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.classComptable.description"
+            >__jhiTransformTranslate__('eComptaApp.classComptable.description')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ classComptable.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.classComptable.compte">__jhiTransformTranslate__('eComptaApp.classComptable.compte')</span></dt>
+        <dd>
+          <div *ngIf="classComptable.compte">
+            <a [routerLink]="['/compte', classComptable.compte.id, 'view']">{{ classComptable.compte.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/class-comptable', classComptable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

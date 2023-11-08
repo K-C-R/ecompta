@@ -1,0 +1,26 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021010445",
+  "entityTableName": "resultat",
+  "fields": [
+    {
+      "fieldName": "exercice",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "resultatNet",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Resultat",
+  "relationships": [
+    {
+      "otherEntityName": "compteDeResultat",
+      "otherEntityRelationshipName": "resultat",
+      "relationshipName": "comptesDeResultat",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,27 @@
+{
+  "eComptaApp": {
+    "classComptable": {
+      "home": {
+        "title": "ClassComptables",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Class Comptable",
+        "createOrEditLabel": "Créer ou éditer un Class Comptable",
+        "notFound": "Aucun Class Comptable trouvé"
+      },
+      "created": "Un nouveau Class Comptable a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Class Comptable avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Class Comptable avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Class Comptable {{ id }} ?"
+      },
+      "detail": {
+        "title": "Class Comptable"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "description": "Description",
+      "compte": "Compte",
+      "compteComptable": "Compte Comptable"
+    }
+  }
+}

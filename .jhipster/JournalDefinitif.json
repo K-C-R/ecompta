@@ -1,0 +1,45 @@
+{
+  "changelogDate": "20231023224612",
+  "entityTableName": "journal_definitif",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "montant",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    }
+  ],
+  "name": "JournalDefinitif",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "compte",
+      "relationshipName": "compte",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": []
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "balance",
+      "relationshipName": "balance",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "no"
+}

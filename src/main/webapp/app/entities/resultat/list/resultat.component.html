@@ -1,0 +1,99 @@
+<div>
+  <h2 id="page-heading" data-cy="ResultatHeading">
+    <span jhiTranslate="eComptaApp.resultat.home.title">__jhiTransformTranslate__('eComptaApp.resultat.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.resultat.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.resultat.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-resultat"
+        [routerLink]="['/resultat/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.resultat.home.createLabel">__jhiTransformTranslate__('eComptaApp.resultat.home.createLabel')</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="resultats?.length === 0">
+    <span jhiTranslate="eComptaApp.resultat.home.notFound">__jhiTransformTranslate__('eComptaApp.resultat.home.notFound')</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="resultats && resultats.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="exercice">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.resultat.exercice">__jhiTransformTranslate__('eComptaApp.resultat.exercice')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="resultatNet">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.resultat.resultatNet">__jhiTransformTranslate__('eComptaApp.resultat.resultatNet')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultat of resultats; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/resultat', resultat.id, 'view']">{{ resultat.id }}</a>
+          </td>
+          <td>{{ resultat.exercice | formatMediumDatetime }}</td>
+          <td>{{ resultat.resultatNet }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/resultat', resultat.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/resultat', resultat.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(resultat)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<div>
+  <h2 id="page-heading" data-cy="RapportsPersonnalisesHeading">
+    <span jhiTranslate="eComptaApp.rapportsPersonnalises.home.title"
+      >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.home.title')</span
+    >
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.rapportsPersonnalises.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-rapports-personnalises"
+        [routerLink]="['/rapports-personnalises/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.rapportsPersonnalises.home.createLabel"
+          >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.home.createLabel')</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="rapportsPersonnalises?.length === 0">
+    <span jhiTranslate="eComptaApp.rapportsPersonnalises.home.notFound"
+      >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.home.notFound')</span
+    >
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="rapportsPersonnalises && rapportsPersonnalises.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.rapportsPersonnalises.nom"
+                >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.nom')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.rapportsPersonnalises.description"
+                >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.description')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contenu">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.rapportsPersonnalises.contenu"
+                >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.contenu')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rapportsPersonnalises of rapportsPersonnalises; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/rapports-personnalises', rapportsPersonnalises.id, 'view']">{{ rapportsPersonnalises.id }}</a>
+          </td>
+          <td>{{ rapportsPersonnalises.nom }}</td>
+          <td>{{ rapportsPersonnalises.description }}</td>
+          <td>{{ rapportsPersonnalises.contenu }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/rapports-personnalises', rapportsPersonnalises.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/rapports-personnalises', rapportsPersonnalises.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(rapportsPersonnalises)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

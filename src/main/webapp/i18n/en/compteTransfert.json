@@ -1,0 +1,27 @@
+{
+  "eComptaApp": {
+    "compteTransfert": {
+      "home": {
+        "title": "Compte Transferts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Compte Transfert",
+        "createOrEditLabel": "Create or edit a Compte Transfert",
+        "notFound": "No Compte Transferts found"
+      },
+      "created": "A new Compte Transfert is created with identifier {{ param }}",
+      "updated": "A Compte Transfert is updated with identifier {{ param }}",
+      "deleted": "A Compte Transfert is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Compte Transfert {{ id }}?"
+      },
+      "detail": {
+        "title": "Compte Transfert"
+      },
+      "id": "ID",
+      "numeroCompte": "Numero Compte",
+      "nom": "Nom",
+      "description": "Description",
+      "compte": "Compte"
+    }
+  }
+}

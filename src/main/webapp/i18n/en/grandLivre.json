@@ -1,0 +1,29 @@
+{
+  "eComptaApp": {
+    "grandLivre": {
+      "home": {
+        "title": "Grand Livres",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Grand Livre",
+        "createOrEditLabel": "Create or edit a Grand Livre",
+        "notFound": "No Grand Livres found"
+      },
+      "created": "A new Grand Livre is created with identifier {{ param }}",
+      "updated": "A Grand Livre is updated with identifier {{ param }}",
+      "deleted": "A Grand Livre is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Grand Livre {{ id }}?"
+      },
+      "detail": {
+        "title": "Grand Livre"
+      },
+      "id": "ID",
+      "date": "Date",
+      "description": "Description",
+      "montant": "Montant",
+      "reference": "Reference",
+      "compte": "Compte",
+      "balance": "Balance"
+    }
+  }
+}

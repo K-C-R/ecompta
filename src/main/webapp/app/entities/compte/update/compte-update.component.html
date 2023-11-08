@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-compte-heading" data-cy="CompteCreateUpdateHeading" jhiTranslate="eComptaApp.compte.home.createOrEditLabel">
+        __jhiTransformTranslate__('eComptaApp.compte.home.createOrEditLabel')
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.compte.numeroCompte" for="field_numeroCompte">Numero Compte</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroCompte"
+            id="field_numeroCompte"
+            data-cy="numeroCompte"
+            formControlName="numeroCompte"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.compte.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.compte.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.compte.cloture" for="field_cloture">Cloture</label>
+          <input type="checkbox" class="form-check" name="cloture" id="field_cloture" data-cy="cloture" formControlName="cloture" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.compte.bilan" for="field_bilan"
+            >__jhiTransformTranslate__('eComptaApp.compte.bilan')</label
+          >
+          <select class="form-control" id="field_bilan" data-cy="bilan" name="bilan" formControlName="bilan" [compareWith]="compareBilan">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="bilanOption" *ngFor="let bilanOption of bilansSharedCollection"></option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel"
+            >__jhiTransformTranslate__('entity.action.cancel')</span
+          >
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save"
+            >__jhiTransformTranslate__('entity.action.save')</span
+          >
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

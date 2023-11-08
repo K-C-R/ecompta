@@ -1,0 +1,29 @@
+{
+  "eComptaApp": {
+    "grandLivre": {
+      "home": {
+        "title": "GrandLivres",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Grand Livre",
+        "createOrEditLabel": "Créer ou éditer un Grand Livre",
+        "notFound": "Aucun Grand Livre trouvé"
+      },
+      "created": "Un nouveau Grand Livre a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Grand Livre avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Grand Livre avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Grand Livre {{ id }} ?"
+      },
+      "detail": {
+        "title": "Grand Livre"
+      },
+      "id": "ID",
+      "date": "Date",
+      "description": "Description",
+      "montant": "Montant",
+      "reference": "Reference",
+      "compte": "Compte",
+      "balance": "Balance"
+    }
+  }
+}

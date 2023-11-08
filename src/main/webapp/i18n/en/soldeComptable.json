@@ -1,0 +1,25 @@
+{
+  "eComptaApp": {
+    "soldeComptable": {
+      "home": {
+        "title": "Solde Comptables",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Solde Comptable",
+        "createOrEditLabel": "Create or edit a Solde Comptable",
+        "notFound": "No Solde Comptables found"
+      },
+      "created": "A new Solde Comptable is created with identifier {{ param }}",
+      "updated": "A Solde Comptable is updated with identifier {{ param }}",
+      "deleted": "A Solde Comptable is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Solde Comptable {{ id }}?"
+      },
+      "detail": {
+        "title": "Solde Comptable"
+      },
+      "id": "ID",
+      "solde": "Solde",
+      "compte": "Compte"
+    }
+  }
+}

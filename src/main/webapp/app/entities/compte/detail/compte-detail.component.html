@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="compte">
+      <h2 data-cy="compteDetailsHeading">
+        <span jhiTranslate="eComptaApp.compte.detail.title">__jhiTransformTranslate__('eComptaApp.compte.detail.title')</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <!-- <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ compte.id }}</span>
+        </dd> -->
+        <dt><span jhiTranslate="eComptaApp.compte.numeroCompte">__jhiTransformTranslate__('eComptaApp.compte.numeroCompte')</span></dt>
+        <dd>
+          <span>{{ compte.numeroCompte }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.compte.nom">__jhiTransformTranslate__('eComptaApp.compte.nom')</span></dt>
+        <dd>
+          <span>{{ compte.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.compte.description">__jhiTransformTranslate__('eComptaApp.compte.description')</span></dt>
+        <dd>
+          <span>{{ compte.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.compte.cloture">Etat</span></dt>
+        <dd>
+          <span>{{ compte.cloture ? 'fermé' : 'ouvert' }}</span>
+          <!-- </dd>
+        <dt><span jhiTranslate="eComptaApp.compte.bilan">__jhiTransformTranslate__('eComptaApp.compte.bilan')</span></dt>
+        <dd> -->
+          <div *ngIf="compte.bilan">
+            <a [routerLink]="['/bilan', compte.bilan.id, 'view']"></a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/compte', compte.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

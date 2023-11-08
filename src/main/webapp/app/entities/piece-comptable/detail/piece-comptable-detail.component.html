@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pieceComptable">
+      <h2 data-cy="pieceComptableDetailsHeading">
+        <span jhiTranslate="eComptaApp.pieceComptable.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.pieceComptable.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ pieceComptable.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.pieceComptable.numeroPiece"
+            >__jhiTransformTranslate__('eComptaApp.pieceComptable.numeroPiece')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ pieceComptable.numeroPiece }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.pieceComptable.datePiece">__jhiTransformTranslate__('eComptaApp.pieceComptable.datePiece')</span>
+        </dt>
+        <dd>
+          <span>{{ pieceComptable.datePiece | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.pieceComptable.description"
+            >__jhiTransformTranslate__('eComptaApp.pieceComptable.description')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ pieceComptable.description }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.pieceComptable.comptes">__jhiTransformTranslate__('eComptaApp.pieceComptable.comptes')</span>
+        </dt>
+        <dd>
+          <span *ngFor="let comptes of pieceComptable.comptes; let last = last">
+            <a [routerLink]="['/compte', comptes.id, 'view']">{{ comptes.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.pieceComptable.transactions"
+            >__jhiTransformTranslate__('eComptaApp.pieceComptable.transactions')</span
+          >
+        </dt>
+        <dd>
+          <span *ngFor="let transactions of pieceComptable.transactions; let last = last">
+            <a [routerLink]="['/transaction', transactions.id, 'view']">{{ transactions.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/piece-comptable', pieceComptable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

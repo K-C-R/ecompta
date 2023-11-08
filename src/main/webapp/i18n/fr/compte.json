@@ -1,0 +1,34 @@
+{
+  "eComptaApp": {
+    "compte": {
+      "home": {
+        "title": "Comptes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Compte",
+        "createOrEditLabel": "Créer ou éditer un Compte",
+        "notFound": "Aucun Compte trouvé"
+      },
+      "created": "Un nouveau Compte a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Compte avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Compte avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Compte {{ id }} ?"
+      },
+      "detail": {
+        "title": "Compte"
+      },
+      "id": "ID",
+      "numeroCompte": "Numero Compte",
+      "nom": "Nom",
+      "description": "Description",
+      "cloture": "Cloture",
+      "transaction": "Transaction",
+      "soldeComptable": "Solde Comptable",
+      "compteAttente": "Compte Attente",
+      "compteTransfert": "Compte Transfert",
+      "audit": "Audit",
+      "bilan": "Bilan",
+      "pieceComptable": "Piece Comptable"
+    }
+  }
+}

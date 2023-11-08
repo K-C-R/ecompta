@@ -1,0 +1,27 @@
+{
+  "eComptaApp": {
+    "compteTransfert": {
+      "home": {
+        "title": "CompteTransferts",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Compte Transfert",
+        "createOrEditLabel": "Créer ou éditer un Compte Transfert",
+        "notFound": "Aucun Compte Transfert trouvé"
+      },
+      "created": "Un nouveau Compte Transfert a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Compte Transfert avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Compte Transfert avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Compte Transfert {{ id }} ?"
+      },
+      "detail": {
+        "title": "Compte Transfert"
+      },
+      "id": "ID",
+      "numeroCompte": "Numero Compte",
+      "nom": "Nom",
+      "description": "Description",
+      "compte": "Compte"
+    }
+  }
+}

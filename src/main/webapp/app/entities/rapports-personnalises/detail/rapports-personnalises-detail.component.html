@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="rapportsPersonnalises">
+      <h2 data-cy="rapportsPersonnalisesDetailsHeading">
+        <span jhiTranslate="eComptaApp.rapportsPersonnalises.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ rapportsPersonnalises.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.rapportsPersonnalises.nom">__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.nom')</span>
+        </dt>
+        <dd>
+          <span>{{ rapportsPersonnalises.nom }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.rapportsPersonnalises.description"
+            >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.description')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ rapportsPersonnalises.description }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.rapportsPersonnalises.contenu"
+            >__jhiTransformTranslate__('eComptaApp.rapportsPersonnalises.contenu')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ rapportsPersonnalises.contenu }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/rapports-personnalises', rapportsPersonnalises.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

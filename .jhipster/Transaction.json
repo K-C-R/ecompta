@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021005845",
+  "entityTableName": "transaction",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "montant",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Transaction",
+  "relationships": [
+    {
+      "otherEntityField": "transaction",
+      "otherEntityName": "compte",
+      "relationshipName": "compte",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

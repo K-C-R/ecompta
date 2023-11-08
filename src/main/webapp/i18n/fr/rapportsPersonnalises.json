@@ -1,0 +1,26 @@
+{
+  "eComptaApp": {
+    "rapportsPersonnalises": {
+      "home": {
+        "title": "RapportsPersonnalises",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Rapports Personnalises",
+        "createOrEditLabel": "Créer ou éditer un Rapports Personnalises",
+        "notFound": "Aucun Rapports Personnalises trouvé"
+      },
+      "created": "Un nouveau Rapports Personnalises a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Rapports Personnalises avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Rapports Personnalises avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Rapports Personnalises {{ id }} ?"
+      },
+      "detail": {
+        "title": "Rapports Personnalises"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "description": "Description",
+      "contenu": "Contenu"
+    }
+  }
+}

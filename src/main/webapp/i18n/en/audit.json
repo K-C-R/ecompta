@@ -1,0 +1,28 @@
+{
+  "eComptaApp": {
+    "audit": {
+      "home": {
+        "title": "Audits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Audit",
+        "createOrEditLabel": "Create or edit a Audit",
+        "notFound": "No Audits found"
+      },
+      "created": "A new Audit is created with identifier {{ param }}",
+      "updated": "A Audit is updated with identifier {{ param }}",
+      "deleted": "A Audit is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Audit {{ id }}?"
+      },
+      "detail": {
+        "title": "Audit"
+      },
+      "id": "ID",
+      "date": "Date",
+      "action": "Action",
+      "entiteModifiee": "Entite Modifiee",
+      "utilisateur": "Utilisateur",
+      "compte": "Compte"
+    }
+  }
+}

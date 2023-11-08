@@ -1,0 +1,26 @@
+{
+  "eComptaApp": {
+    "rapportsPersonnalises": {
+      "home": {
+        "title": "Rapports Personnalises",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Rapports Personnalises",
+        "createOrEditLabel": "Create or edit a Rapports Personnalises",
+        "notFound": "No Rapports Personnalises found"
+      },
+      "created": "A new Rapports Personnalises is created with identifier {{ param }}",
+      "updated": "A Rapports Personnalises is updated with identifier {{ param }}",
+      "deleted": "A Rapports Personnalises is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rapports Personnalises {{ id }}?"
+      },
+      "detail": {
+        "title": "Rapports Personnalises"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "description": "Description",
+      "contenu": "Contenu"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity PieceComptable.
+    -->
+    <changeSet id="20231021010745-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="piece_comptable_id"
+                                 baseTableName="rel_piece_comptable__comptes"
+                                 constraintName="fk_rel_piece_comptable__comptes__piece_comptable_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="piece_comptable"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="comptes_id"
+                                 baseTableName="rel_piece_comptable__comptes"
+                                 constraintName="fk_rel_piece_comptable__comptes__comptes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compte"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="piece_comptable_id"
+                                 baseTableName="rel_piece_comptable__transactions"
+                                 constraintName="fk_rel_piece_comptable__transactions__piece_comptable_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="piece_comptable"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="transactions_id"
+                                 baseTableName="rel_piece_comptable__transactions"
+                                 constraintName="fk_rel_piece_comptable__transactions__transactions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction"
+                                 />
+    </changeSet>
+</databaseChangeLog>

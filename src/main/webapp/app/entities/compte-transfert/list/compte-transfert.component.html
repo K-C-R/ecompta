@@ -1,0 +1,125 @@
+<div>
+  <h2 id="page-heading" data-cy="CompteTransfertHeading">
+    <span jhiTranslate="eComptaApp.compteTransfert.home.title">__jhiTransformTranslate__('eComptaApp.compteTransfert.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.compteTransfert.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.compteTransfert.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-compte-transfert"
+        [routerLink]="['/compte-transfert/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.compteTransfert.home.createLabel"
+          >__jhiTransformTranslate__('eComptaApp.compteTransfert.home.createLabel')</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="compteTransferts?.length === 0">
+    <span jhiTranslate="eComptaApp.compteTransfert.home.notFound"
+      >__jhiTransformTranslate__('eComptaApp.compteTransfert.home.notFound')</span
+    >
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="compteTransferts && compteTransferts.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numeroCompte">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteTransfert.numeroCompte"
+                >__jhiTransformTranslate__('eComptaApp.compteTransfert.numeroCompte')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteTransfert.nom">__jhiTransformTranslate__('eComptaApp.compteTransfert.nom')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteTransfert.description"
+                >__jhiTransformTranslate__('eComptaApp.compteTransfert.description')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compte.compteTransfert">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteTransfert.compte">__jhiTransformTranslate__('eComptaApp.compteTransfert.compte')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compteTransfert of compteTransferts; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/compte-transfert', compteTransfert.id, 'view']">{{ compteTransfert.id }}</a>
+          </td>
+          <td>{{ compteTransfert.numeroCompte }}</td>
+          <td>{{ compteTransfert.nom }}</td>
+          <td>{{ compteTransfert.description }}</td>
+          <td>
+            <div *ngIf="compteTransfert.compte">
+              <a [routerLink]="['/compte', compteTransfert.compte.id, 'view']"></a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/compte-transfert', compteTransfert.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/compte-transfert', compteTransfert.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(compteTransfert)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

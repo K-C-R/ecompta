@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021010145",
+  "entityTableName": "solde_comptable",
+  "fields": [
+    {
+      "fieldName": "solde",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "SoldeComptable",
+  "relationships": [
+    {
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "soldeComptable",
+      "relationshipName": "compte",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

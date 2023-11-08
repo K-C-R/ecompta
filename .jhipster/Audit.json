@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021010645",
+  "entityTableName": "audit",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "action",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "entiteModifiee",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "utilisateur",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Audit",
+  "relationships": [
+    {
+      "otherEntityField": "audit",
+      "otherEntityName": "compte",
+      "relationshipName": "compte",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

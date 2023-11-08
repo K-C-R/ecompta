@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="journalDefinitif">
+      <h2 data-cy="journalDefinitifDetailsHeading">
+        <span jhiTranslate="eComptaApp.journalDefinitif.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.journalDefinitif.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ journalDefinitif.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.journalDefinitif.date">__jhiTransformTranslate__('eComptaApp.journalDefinitif.date')</span></dt>
+        <dd>
+          <span>{{ journalDefinitif.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.journalDefinitif.description"
+            >__jhiTransformTranslate__('eComptaApp.journalDefinitif.description')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ journalDefinitif.description }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.journalDefinitif.montant">__jhiTransformTranslate__('eComptaApp.journalDefinitif.montant')</span>
+        </dt>
+        <dd>
+          <span>{{ journalDefinitif.montant }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.journalDefinitif.reference"
+            >__jhiTransformTranslate__('eComptaApp.journalDefinitif.reference')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ journalDefinitif.reference }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.journalDefinitif.compte">__jhiTransformTranslate__('eComptaApp.journalDefinitif.compte')</span>
+        </dt>
+        <dd>
+          <div *ngIf="journalDefinitif.compte">
+            <a [routerLink]="['/compte', journalDefinitif.compte.id, 'view']">{{ journalDefinitif.compte.id }}</a>
+          </div>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.journalDefinitif.balance">__jhiTransformTranslate__('eComptaApp.journalDefinitif.balance')</span>
+        </dt>
+        <dd>
+          <div *ngIf="journalDefinitif.balance">
+            <a [routerLink]="['/balance', journalDefinitif.balance.id, 'view']">{{ journalDefinitif.balance.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/journal-definitif', journalDefinitif.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

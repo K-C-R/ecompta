@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="compteDeResultat">
+      <h2 data-cy="compteDeResultatDetailsHeading">
+        <span jhiTranslate="eComptaApp.compteDeResultat.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.compteDeResultat.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ compteDeResultat.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.compteDeResultat.exercice">__jhiTransformTranslate__('eComptaApp.compteDeResultat.exercice')</span>
+        </dt>
+        <dd>
+          <span>{{ compteDeResultat.exercice | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.compteDeResultat.produitsTotal"
+            >__jhiTransformTranslate__('eComptaApp.compteDeResultat.produitsTotal')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ compteDeResultat.produitsTotal }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.compteDeResultat.chargesTotal"
+            >__jhiTransformTranslate__('eComptaApp.compteDeResultat.chargesTotal')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ compteDeResultat.chargesTotal }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.compteDeResultat.resultatNet"
+            >__jhiTransformTranslate__('eComptaApp.compteDeResultat.resultatNet')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ compteDeResultat.resultatNet }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.compteDeResultat.resultat">__jhiTransformTranslate__('eComptaApp.compteDeResultat.resultat')</span>
+        </dt>
+        <dd>
+          <div *ngIf="compteDeResultat.resultat">
+            <a [routerLink]="['/resultat', compteDeResultat.resultat.id, 'view']">{{ compteDeResultat.resultat.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/compte-de-resultat', compteDeResultat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

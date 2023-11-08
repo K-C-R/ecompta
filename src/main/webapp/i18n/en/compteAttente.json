@@ -1,0 +1,27 @@
+{
+  "eComptaApp": {
+    "compteAttente": {
+      "home": {
+        "title": "Compte Attentes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Compte Attente",
+        "createOrEditLabel": "Create or edit a Compte Attente",
+        "notFound": "No Compte Attentes found"
+      },
+      "created": "A new Compte Attente is created with identifier {{ param }}",
+      "updated": "A Compte Attente is updated with identifier {{ param }}",
+      "deleted": "A Compte Attente is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Compte Attente {{ id }}?"
+      },
+      "detail": {
+        "title": "Compte Attente"
+      },
+      "id": "ID",
+      "numeroCompte": "Numero Compte",
+      "nom": "Nom",
+      "description": "Description",
+      "compte": "Compte"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021010345",
+  "entityTableName": "compte_de_resultat",
+  "fields": [
+    {
+      "fieldName": "exercice",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "produitsTotal",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "chargesTotal",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "resultatNet",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "CompteDeResultat",
+  "relationships": [
+    {
+      "otherEntityName": "resultat",
+      "otherEntityRelationshipName": "comptesDeResultat",
+      "relationshipName": "resultat",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

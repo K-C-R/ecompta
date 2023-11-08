@@ -1,0 +1,194 @@
+<div *ngIf="routeActuelle === '/compte'">
+  <h2 id="page-heading" data-cy="CompteHeading">
+    <span jhiTranslate="eComptaApp.compte.home.title">__jhiTransformTranslate__('eComptaApp.compte.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.compte.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.compte.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-compte"
+        [routerLink]="['/compte/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.compte.home.createLabel">__jhiTransformTranslate__('eComptaApp.compte.home.createLabel')</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="comptes?.length === 0">
+    <span jhiTranslate="eComptaApp.compte.home.notFound">__jhiTransformTranslate__('eComptaApp.compte.home.notFound')</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="comptes && comptes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numeroCompte">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compte.numeroCompte">__jhiTransformTranslate__('eComptaApp.compte.numeroCompte')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compte.nom">__jhiTransformTranslate__('eComptaApp.compte.nom')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compte.description">__jhiTransformTranslate__('eComptaApp.compte.description')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cloture">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compte.cloture">__jhiTransformTranslate__('eComptaApp.compte.cloture')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <!-- <th scope="col" jhiSortBy="bilan.compte">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compte.bilan">__jhiTransformTranslate__('eComptaApp.compte.bilan')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th> -->
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compte of comptes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/compte', compte.id, 'view']">{{ compte.id }}</a>
+          </td>
+          <td>{{ compte.numeroCompte }}</td>
+          <td>{{ compte.nom }}</td>
+          <td>{{ compte.description }}</td>
+          <td>{{ compte.cloture == false ? 'ouvert' : 'fermé' }}</td>
+          <td>
+            <div *ngIf="compte.bilan">
+              <a [routerLink]="['/bilan', compte.bilan.id, 'view']"></a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/compte', compte.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/compte', compte.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(compte)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="routeActuelle !== '/compte'">
+  <div class="modal-header">
+    <h2 id="modal-header" data-cy="CompteHeading">
+      <span data-cy="compteDeleteDialogHeading" class="modal-title">Clôture des Comptes</span>
+    </h2>
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="comptes?.length === 0">
+    <span jhiTranslate="eComptaApp.compte.home.notFound">__jhiTransformTranslate__('eComptaApp.compte.home.notFound')</span>
+  </div>
+
+  <div class="body modal-body" *ngIf="routeActuelle == '/'">
+    <div class="table-responsive table-entities" id="entities" *ngIf="comptes && comptes.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroCompte">
+              <div class="d-flex">
+                <span jhiTranslate="eComptaApp.compte.numeroCompte">__jhiTransformTranslate__('eComptaApp.compte.numeroCompte')</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nom">
+              <div class="d-flex">
+                <span jhiTranslate="eComptaApp.compte.nom">__jhiTransformTranslate__('eComptaApp.compte.nom')</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="eComptaApp.compte.description">__jhiTransformTranslate__('eComptaApp.compte.description')</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cloture">
+              <div class="d-flex">
+                <span jhiTranslate="eComptaApp.compte.cloture">Status</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let compte of comptes; trackBy: trackId" data-cy="entityTable">
+            <td>
+              <a [routerLink]="['/compte', compte.id, 'view']">{{ compte.id }}</a>
+            </td>
+            <td>{{ compte.numeroCompte }}</td>
+            <td>{{ compte.nom }}</td>
+            <td>{{ compte.description }}</td>
+            <td>{{ compte.cloture ? 'ouvert' : 'fermé' }}</td>
+            <td class="text-end">
+              <div class="btn-group">
+                <button class="btn btn-success" (click)="cloture(compte, false)" *ngIf="compte.cloture == true">Ouvrire</button>
+                <button class="btn btn-danger" (click)="cloture(compte, true)" *ngIf="compte.cloture == false">Fermer</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Quitter</span>
+    </button>
+  </div>
+</div>

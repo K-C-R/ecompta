@@ -1,0 +1,105 @@
+<div>
+  <h2 id="page-heading" data-cy="SoldeComptableHeading">
+    <span jhiTranslate="eComptaApp.soldeComptable.home.title">__jhiTransformTranslate__('eComptaApp.soldeComptable.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.soldeComptable.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.soldeComptable.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-solde-comptable"
+        [routerLink]="['/solde-comptable/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.soldeComptable.home.createLabel"
+          >__jhiTransformTranslate__('eComptaApp.soldeComptable.home.createLabel')</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="soldeComptables?.length === 0">
+    <span jhiTranslate="eComptaApp.soldeComptable.home.notFound">__jhiTransformTranslate__('eComptaApp.soldeComptable.home.notFound')</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="soldeComptables && soldeComptables.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="solde">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.soldeComptable.solde">__jhiTransformTranslate__('eComptaApp.soldeComptable.solde')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compte.id">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.soldeComptable.compte">__jhiTransformTranslate__('eComptaApp.soldeComptable.compte')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let soldeComptable of soldeComptables; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/solde-comptable', soldeComptable.id, 'view']">{{ soldeComptable.id }}</a>
+          </td>
+          <td>{{ soldeComptable.solde }}</td>
+          <td>
+            <div *ngIf="soldeComptable.compte">
+              <a [routerLink]="['/compte', soldeComptable.compte.id, 'view']">{{ soldeComptable.compte.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/solde-comptable', soldeComptable.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/solde-comptable', soldeComptable.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(soldeComptable)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

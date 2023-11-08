@@ -1,0 +1,27 @@
+{
+  "eComptaApp": {
+    "compteComptable": {
+      "home": {
+        "title": "CompteComptables",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Compte Comptable",
+        "createOrEditLabel": "Créer ou éditer un Compte Comptable",
+        "notFound": "Aucun Compte Comptable trouvé"
+      },
+      "created": "Un nouveau Compte Comptable a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Compte Comptable avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Compte Comptable avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Compte Comptable {{ id }} ?"
+      },
+      "detail": {
+        "title": "Compte Comptable"
+      },
+      "id": "ID",
+      "numero": "Numero",
+      "nom": "Nom",
+      "description": "Description",
+      "classComptable": "Class Comptable"
+    }
+  }
+}

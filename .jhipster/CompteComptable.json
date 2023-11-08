@@ -1,0 +1,33 @@
+{
+  "changelogDate": "20231108231133",
+  "entityTableName": "compte_comptable",
+  "fields": [
+    {
+      "fieldName": "numero",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "CompteComptable",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "classComptable",
+      "otherEntityRelationshipName": "compteComptable",
+      "relationshipName": "classComptable",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "no"
+}

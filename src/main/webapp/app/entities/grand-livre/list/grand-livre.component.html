@@ -1,0 +1,155 @@
+<div>
+  <h2 id="page-heading" data-cy="GrandLivreHeading">
+    <span jhiTranslate="eComptaApp.grandLivre.home.title">__jhiTransformTranslate__('eComptaApp.grandLivre.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.grandLivre.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.grandLivre.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-grand-livre"
+        [routerLink]="['/grand-livre/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.grandLivre.home.createLabel"
+          >__jhiTransformTranslate__('eComptaApp.grandLivre.home.createLabel')</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="grandLivres?.length === 0">
+    <span jhiTranslate="eComptaApp.grandLivre.home.notFound">__jhiTransformTranslate__('eComptaApp.grandLivre.home.notFound')</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="grandLivres && grandLivres.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.grandLivre.date">__jhiTransformTranslate__('eComptaApp.grandLivre.date')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.grandLivre.description">__jhiTransformTranslate__('eComptaApp.grandLivre.description')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montant">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.grandLivre.montant">__jhiTransformTranslate__('eComptaApp.grandLivre.montant')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="reference">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.grandLivre.reference">__jhiTransformTranslate__('eComptaApp.grandLivre.reference')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compte.id">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.grandLivre.compte">__jhiTransformTranslate__('eComptaApp.grandLivre.compte')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="balance.id">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.grandLivre.balance">__jhiTransformTranslate__('eComptaApp.grandLivre.balance')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let grandLivre of grandLivres; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/grand-livre', grandLivre.id, 'view']">{{ grandLivre.id }}</a>
+          </td>
+          <td>{{ grandLivre.date | formatMediumDatetime }}</td>
+          <td>{{ grandLivre.description }}</td>
+          <td>{{ grandLivre.montant }}</td>
+          <td>{{ grandLivre.reference }}</td>
+          <td>
+            <div *ngIf="grandLivre.compte">
+              <a [routerLink]="['/compte', grandLivre.compte.id, 'view']">{{ grandLivre.compte.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="grandLivre.balance">
+              <a [routerLink]="['/balance', grandLivre.balance.id, 'view']">{{ grandLivre.balance.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/grand-livre', grandLivre.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/grand-livre', grandLivre.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(grandLivre)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="grandLivres && grandLivres.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

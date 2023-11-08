@@ -1,0 +1,28 @@
+{
+  "eComptaApp": {
+    "compteDeResultat": {
+      "home": {
+        "title": "Compte De Resultats",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Compte De Resultat",
+        "createOrEditLabel": "Create or edit a Compte De Resultat",
+        "notFound": "No Compte De Resultats found"
+      },
+      "created": "A new Compte De Resultat is created with identifier {{ param }}",
+      "updated": "A Compte De Resultat is updated with identifier {{ param }}",
+      "deleted": "A Compte De Resultat is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Compte De Resultat {{ id }}?"
+      },
+      "detail": {
+        "title": "Compte De Resultat"
+      },
+      "id": "ID",
+      "exercice": "Exercice",
+      "produitsTotal": "Produits Total",
+      "chargesTotal": "Charges Total",
+      "resultatNet": "Resultat Net",
+      "resultat": "Resultat"
+    }
+  }
+}

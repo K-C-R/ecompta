@@ -32,9 +32,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/eCompta
-    username: eCompta
-    password:
+    url: jdbc:postgresql://localhost:5433/eCompta
+    username: postgres
+    password: 123012
     hikari:
       poolName: Hikari
       auto-commit: false

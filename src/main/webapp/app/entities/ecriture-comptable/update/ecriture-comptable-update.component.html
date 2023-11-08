@@ -1,0 +1,153 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ecriture-comptable-heading"
+        data-cy="EcritureComptableCreateUpdateHeading"
+        jhiTranslate="eComptaApp.ecritureComptable.home.createOrEditLabel"
+      >
+        __jhiTransformTranslate__('eComptaApp.ecritureComptable.home.createOrEditLabel')
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required"
+              >__jhiTransformTranslate__('entity.validation.required')</small
+            >
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('date')?.errors?.datetimelocal"
+              jhiTranslate="entity.validation.datetimelocal"
+              >__jhiTransformTranslate__('entity.validation.datetimelocal')</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.montant" for="field_montant">Montant</label>
+          <input type="number" class="form-control" name="montant" id="field_montant" data-cy="montant" formControlName="montant" />
+          <div *ngIf="editForm.get('montant')!.invalid && (editForm.get('montant')!.dirty || editForm.get('montant')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('montant')?.errors?.required" jhiTranslate="entity.validation.required"
+              >__jhiTransformTranslate__('entity.validation.required')</small
+            >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('montant')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              <!-- __jhiTransformTranslate__('entity.validation.min', { "min": 0 }) -->
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('montant')?.errors?.number" jhiTranslate="entity.validation.number"
+              >__jhiTransformTranslate__('entity.validation.number')</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.libelle" for="field_libelle">Libelle</label>
+          <input type="text" class="form-control" name="libelle" id="field_libelle" data-cy="libelle" formControlName="libelle" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.typeEcriture" for="field_typeEcriture">Type Ecriture</label>
+          <select class="form-control" name="typeEcriture" formControlName="typeEcriture" id="field_typeEcriture" data-cy="typeEcriture">
+            <option [ngValue]="null">{{ 'eComptaApp.TypeEcriture.null' | translate }}</option>
+            <option *ngFor="let typeEcriture of typeEcritureValues" [value]="typeEcriture">
+              <!-- {{ 'eComptaApp.TypeEcriture.' + typeEcriture | translate }} -->
+            </option>
+          </select>
+          <div
+            *ngIf="editForm.get('typeEcriture')!.invalid && (editForm.get('typeEcriture')!.dirty || editForm.get('typeEcriture')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('typeEcriture')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+              >__jhiTransformTranslate__('entity.validation.required')</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.reference" for="field_reference">Reference</label>
+          <input type="text" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.autreInfos" for="field_autreInfos">Autre Infos</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autreInfos"
+            id="field_autreInfos"
+            data-cy="autreInfos"
+            formControlName="autreInfos"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.pieces" for="field_pieces">Pieces</label>
+          <input type="text" class="form-control" name="pieces" id="field_pieces" data-cy="pieces" formControlName="pieces" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.ecritureComptable.compte" for="field_compte"
+            >__jhiTransformTranslate__('eComptaApp.ecritureComptable.compte')</label
+          >
+          <select
+            class="form-control"
+            id="field_compte"
+            data-cy="compte"
+            name="compte"
+            formControlName="compte"
+            [compareWith]="compareCompte"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="compteOption" *ngFor="let compteOption of comptesSharedCollection">{{ compteOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel"
+            >__jhiTransformTranslate__('entity.action.cancel')</span
+          >
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save"
+            >__jhiTransformTranslate__('entity.action.save')</span
+          >
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

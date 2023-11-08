@@ -1,0 +1,27 @@
+{
+  "eComptaApp": {
+    "bilan": {
+      "home": {
+        "title": "Bilans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bilan",
+        "createOrEditLabel": "Create or edit a Bilan",
+        "notFound": "No Bilans found"
+      },
+      "created": "A new Bilan is created with identifier {{ param }}",
+      "updated": "A Bilan is updated with identifier {{ param }}",
+      "deleted": "A Bilan is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bilan {{ id }}?"
+      },
+      "detail": {
+        "title": "Bilan"
+      },
+      "id": "ID",
+      "exercice": "Exercice",
+      "actifTotal": "Actif Total",
+      "passifTotal": "Passif Total",
+      "compte": "Compte"
+    }
+  }
+}

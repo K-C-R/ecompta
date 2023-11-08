@@ -1,0 +1,183 @@
+<div>
+  <h2 id="page-heading" data-cy="EcritureComptableHeading">
+    <span jhiTranslate="eComptaApp.ecritureComptable.home.title">__jhiTransformTranslate__('eComptaApp.ecritureComptable.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.ecritureComptable.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.ecritureComptable.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ecriture-comptable"
+        [routerLink]="['/ecriture-comptable/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.ecritureComptable.home.createLabel"
+          >__jhiTransformTranslate__('eComptaApp.ecritureComptable.home.createLabel')</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ecritureComptables?.length === 0">
+    <span jhiTranslate="eComptaApp.ecritureComptable.home.notFound"
+      >__jhiTransformTranslate__('eComptaApp.ecritureComptable.home.notFound')</span
+    >
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="ecritureComptables && ecritureComptables.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.date">__jhiTransformTranslate__('eComptaApp.ecritureComptable.date')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montant">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.montant"
+                >__jhiTransformTranslate__('eComptaApp.ecritureComptable.montant')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="libelle">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.libelle"
+                >__jhiTransformTranslate__('eComptaApp.ecritureComptable.libelle')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="typeEcriture">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.typeEcriture"
+                >__jhiTransformTranslate__('eComptaApp.ecritureComptable.typeEcriture')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="reference">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.reference"
+                >__jhiTransformTranslate__('eComptaApp.ecritureComptable.reference')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autreInfos">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.autreInfos"
+                >__jhiTransformTranslate__('eComptaApp.ecritureComptable.autreInfos')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pieces">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.pieces"
+                >__jhiTransformTranslate__('eComptaApp.ecritureComptable.pieces')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compte.id">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.ecritureComptable.compte"
+                >__jhiTransformTranslate__('eComptaApp.ecritureComptable.compte')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ecritureComptable of ecritureComptables; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ecriture-comptable', ecritureComptable.id, 'view']">{{ ecritureComptable.id }}</a>
+          </td>
+          <td>{{ ecritureComptable.date | formatMediumDatetime }}</td>
+          <td>{{ ecritureComptable.montant }}</td>
+          <td>{{ ecritureComptable.libelle }}</td>
+          <td jhiTranslate="{{ 'eComptaApp.TypeEcriture.' + ecritureComptable.typeEcriture }}">{{ ecritureComptable.typeEcriture }}</td>
+          <td>{{ ecritureComptable.reference }}</td>
+          <td>{{ ecritureComptable.autreInfos }}</td>
+          <td>{{ ecritureComptable.pieces }}</td>
+          <td>
+            <div *ngIf="ecritureComptable.compte">
+              <a [routerLink]="['/compte', ecritureComptable.compte.id, 'view']">{{ ecritureComptable.compte.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/ecriture-comptable', ecritureComptable.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/ecriture-comptable', ecritureComptable.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(ecritureComptable)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="ecritureComptables && ecritureComptables.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -48,6 +48,32 @@ public class CacheConfiguration {
             createCache(cm, com.edefence.ecompta.domain.User.class.getName());
             createCache(cm, com.edefence.ecompta.domain.Authority.class.getName());
             createCache(cm, com.edefence.ecompta.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.edefence.ecompta.domain.Compte.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Compte.class.getName() + ".transactions");
+            createCache(cm, com.edefence.ecompta.domain.Compte.class.getName() + ".soldeComptables");
+            createCache(cm, com.edefence.ecompta.domain.Compte.class.getName() + ".compteAttentes");
+            createCache(cm, com.edefence.ecompta.domain.Compte.class.getName() + ".compteTransferts");
+            createCache(cm, com.edefence.ecompta.domain.Compte.class.getName() + ".audits");
+            createCache(cm, com.edefence.ecompta.domain.Compte.class.getName() + ".pieceComptables");
+            createCache(cm, com.edefence.ecompta.domain.Transaction.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Transaction.class.getName() + ".pieceComptables");
+            createCache(cm, com.edefence.ecompta.domain.CompteAttente.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.CompteTransfert.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.SoldeComptable.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Bilan.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Bilan.class.getName() + ".comptes");
+            createCache(cm, com.edefence.ecompta.domain.CompteDeResultat.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Resultat.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Resultat.class.getName() + ".comptesDeResultats");
+            createCache(cm, com.edefence.ecompta.domain.RapportsPersonnalises.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Audit.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.PieceComptable.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.PieceComptable.class.getName() + ".comptes");
+            createCache(cm, com.edefence.ecompta.domain.PieceComptable.class.getName() + ".transactions");
+            createCache(cm, com.edefence.ecompta.domain.EcritureComptable.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.Balance.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.GrandLivre.class.getName());
+            createCache(cm, com.edefence.ecompta.domain.JournalDefinitif.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

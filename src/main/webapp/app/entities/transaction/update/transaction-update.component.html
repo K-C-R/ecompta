@@ -1,0 +1,184 @@
+<!-- <div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-transaction-heading"
+        data-cy="TransactionCreateUpdateHeading"
+        jhiTranslate="eComptaApp.transaction.home.createOrEditLabel"
+      >
+        __jhiTransformTranslate__('eComptaApp.transaction.home.createOrEditLabel')
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.transaction.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.transaction.libelle" for="field_libelle">Libelle</label>
+          <input type="text" class="form-control" name="libelle" id="field_libelle" data-cy="libelle" formControlName="libelle" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.transaction.montant" for="field_montant">Montant</label>
+          <input type="number" class="form-control" name="montant" id="field_montant" data-cy="montant" formControlName="montant" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.transaction.compte" for="field_compte"
+            >__jhiTransformTranslate__('eComptaApp.transaction.compte')</label
+          >
+          <select
+            class="form-control"
+            id="field_compte"
+            data-cy="compte"
+            name="compte"
+            formControlName="compte"
+            [compareWith]="compareCompte"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="compteOption" *ngFor="let compteOption of comptesSharedCollection">{{ compteOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel"
+            >__jhiTransformTranslate__('entity.action.cancel')</span
+          >
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save"
+            >__jhiTransformTranslate__('entity.action.save')</span
+          >
+        </button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-transaction-heading"
+        data-cy="TransactionCreateUpdateHeading"
+        jhiTranslate="eComptaApp.transaction.home.createOrEditLabel"
+      >
+        __jhiTransformTranslate__('eComptaApp.transaction.home.createOrEditLabel')
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <!-- <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div> -->
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.transaction.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.transaction.libelle" for="field_libelle">Libelle</label>
+          <input type="text" class="form-control" name="libelle" id="field_libelle" data-cy="libelle" formControlName="libelle" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="eComptaApp.transaction.montant" for="field_montant">Montant</label>
+          <input type="number" class="form-control" name="montant" id="field_montant" data-cy="montant" formControlName="montant" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_compteCrediter">Compte Créditeur</label>
+          <select
+            class="form-control"
+            id="field_compteCrediter"
+            data-cy="compteCrediter"
+            name="compteCrediter"
+            formControlName="compteCrediter"
+            [compareWith]="compareCompte"
+            required
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="compteOption" *ngFor="let compteOption of comptesSharedCollection">{{ compteOption.nom }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_compteDebiter">Compte Débiteur</label>
+          <select
+            class="form-control"
+            id="field_compteDebiter"
+            data-cy="compteDebiter"
+            name="compteDebiter"
+            formControlName="compteDebiter"
+            [compareWith]="compareCompte"
+            required
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="compteOption" *ngFor="let compteOption of comptesSharedCollection">{{ compteOption.nom }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel"
+            >__jhiTransformTranslate__('entity.action.cancel')</span
+          >
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save"
+            >__jhiTransformTranslate__('entity.action.save')</span
+          >
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

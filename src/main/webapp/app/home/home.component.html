@@ -1,79 +1,175 @@
-<div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
-  </div>
+<!-- <div class="row">
+ <div class="col-md-3">
+   <span class="hipster img-fluid rounded"></span>
+ </div>
 
-  <div class="col-md-9">
-    <h1 class="display-4"><span jhiTranslate="home.title">Bienvenue, Java Hipster !</span> (E Compta)</h1>
+ <div class="col-md-9">
+   <h1 class="display-4"><span jhiTranslate="home.title">Bienvenue, Java Hipster !</span> (E Compta)</h1>
 
-    <p class="lead" jhiTranslate="home.subtitle">Ceci est votre page d'accueil</p>
+   <p class="lead" jhiTranslate="home.subtitle">Ceci est votre page d'accueil</p>
 
-    <div [ngSwitch]="account !== null">
-      <div class="alert alert-success" *ngSwitchCase="true">
-        <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }"
-          >Vous êtes connecté en tant que "{{ account.login }}".</span
-        >
-      </div>
+   <div [ngSwitch]="account !== null">
+     <div class="alert alert-success" *ngSwitchCase="true">
+       <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }"
+         >Vous êtes connecté en tant que "{{ account.login }}".</span
+       >
+     </div>
 
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span jhiTranslate="global.messages.info.authenticated.prefix">Si vous voulez vous </span>
-        <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">connecter</a
-        ><span jhiTranslate="global.messages.info.authenticated.suffix"
-          >, vous pouvez utiliser les comptes par défaut : <br />
-          - Administrateur (nom d'utilisateur="admin" et mot de passe ="admin") <br />
-          - Utilisateur (nom d'utilisateur="user" et mot de passe ="user").</span
-        >
-      </div>
+     <div class="alert alert-warning" *ngSwitchCase="false">
+       <span jhiTranslate="global.messages.info.authenticated.prefix">Si vous voulez vous </span>
+       <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">connecter</a
+       ><span jhiTranslate="global.messages.info.authenticated.suffix"
+         >, vous pouvez utiliser les comptes par défaut : <br />
+         - Administrateur (nom d'utilisateur="admin" et mot de passe ="admin") <br />
+         - Utilisateur (nom d'utilisateur="user" et mot de passe ="user").</span
+       >
+     </div>
 
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span jhiTranslate="global.messages.info.register.noaccount">Vous n'avez pas encore de compte ?</span>&nbsp;
-        <a class="alert-link" routerLink="/account/register" jhiTranslate="global.messages.info.register.link">Créer un compte</a>
-      </div>
+     <div class="alert alert-warning" *ngSwitchCase="false">
+       <span jhiTranslate="global.messages.info.register.noaccount">Vous n'avez pas encore de compte ?</span>&nbsp;
+       <a class="alert-link" routerLink="/account/register" jhiTranslate="global.messages.info.register.link">Créer un compte</a>
+     </div>
+   </div>
+
+   <p jhiTranslate="home.question">Si vous avez des questions à propos de JHipster :</p>
+
+   <ul>
+     <li>
+       <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
+         >Page d'accueil de JHipster</a
+       >
+     </li>
+     <li>
+       <a
+         href="https://stackoverflow.com/tags/jhipster/info"
+         target="_blank"
+         rel="noopener noreferrer"
+         jhiTranslate="home.link.stackoverflow"
+         >JHipster sur Stack Overflow</a
+       >
+     </li>
+     <li>
+       <a
+         href="https://github.com/jhipster/generator-jhipster/issues?state=open"
+         target="_blank"
+         rel="noopener noreferrer"
+         jhiTranslate="home.link.bugtracker"
+         >JHipster bug tracker</a
+       >
+     </li>
+     <li>
+       <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
+         >JHipster public chat room</a
+       >
+     </li>
+     <li>
+       <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
+         >Suivez @jhipster sur Twitter</a
+       >
+     </li>
+   </ul>
+
+   <p>
+     <span jhiTranslate="home.like">Si vous aimez JHipster, donnez nous une étoile sur</span>
+     <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
+       >GitHub </a
+     >!
+   </p>
+ </div>
+</div>
+
+
+
+
+ -->
+
+<!-- <p-accordion class="w-full">
+  <p-accordionTab>
+      <ng-template pTemplate="header">
+          <div class="flex align-items-center">
+              <i class="pi pi-calendar mr-2"></i>
+              <span class="vertical-align-middle">Header I</span>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+          <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+              laborum.
+          </p>
+      </ng-template>
+  </p-accordionTab>
+  <p-accordionTab>
+      <ng-template pTemplate="header">
+          <div class="flex align-items-center">
+              <i class="pi pi-search mr-2"></i>
+              <span class="vertical-align-middle">Header II</span>
+              <i class="pi pi-cog ml-2 ml-2"></i>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+          <p class="m-0">
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
+              culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+          </p>
+      </ng-template>
+  </p-accordionTab>
+  <p-accordionTab>
+      <ng-template pTemplate="header">
+          <div class="flex align-items-center">
+              <i class="pi pi-user mr-2"></i>
+              <span class="vertical-align-middle">Header III</span>
+              <i class="pi pi-cog ml-2 ml-2"></i>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+          <p class="m-0">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
+              enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+          </p>
+      </ng-template>
+  </p-accordionTab>
+</p-accordion> -->
+
+<div>
+  <h2 id="page-heading" data-cy="CompteHeading">
+    <span>Tableau de board </span>
+  </h2>
+
+  <div class="container mt-5">
+    <div class="list-group table table-striped">
+      <button type="button" class="list-group-item list-group-item-action" [routerLink]="['/ecriture-comptable']">
+        Saisie des Ajustements et des Écritures de Fin d'Exercice
+      </button>
+      <button type="button" class="list-group-item list-group-item-action" (click)="listeEcritureComptable()">Clôture des Comptes</button>
+      <button type="button" class="list-group-item list-group-item-action">
+        Édition de la Balance, du Grand Livre et des Journaux Définitifs
+      </button>
+      <button type="button" class="list-group-item list-group-item-action">Confection des États Financiers</button>
+      <button type="button" class="list-group-item list-group-item-action">Diffusion des Résultats</button>
     </div>
 
-    <p jhiTranslate="home.question">Si vous avez des questions à propos de JHipster :</p>
-
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
-          >Page d'accueil de JHipster</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.stackoverflow"
-          >JHipster sur Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.bugtracker"
-          >JHipster bug tracker</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
-          >JHipster public chat room</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
-          >Suivez @jhipster sur Twitter</a
-        >
-      </li>
-    </ul>
-
-    <p>
-      <span jhiTranslate="home.like">Si vous aimez JHipster, donnez nous une étoile sur</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
-        >GitHub </a
-      >!
-    </p>
+    <div class="list-group mt-3">
+      <h4>Gestion des Comptes</h4>
+      <button type="button" class="list-group-item list-group-item-action">Gestion des Comptes Comptables</button>
+      <button type="button" class="list-group-item list-group-item-action">Gestion des Transactions Comptables</button>
+      <button type="button" class="list-group-item list-group-item-action">Gestion des Comptes d'Attente</button>
+      <button type="button" class="list-group-item list-group-item-action">Gestion des Comptes de Transfert</button>
+      <button type="button" class="list-group-item list-group-item-action">Gestion des Soldes Comptables</button>
+    </div>
+    <div class="list-group mt-3">
+      <h4>Rapports et Analyses</h4>
+      <button type="button" class="list-group-item list-group-item-action">Génération des Bilans</button>
+      <button type="button" class="list-group-item list-group-item-action">Génération des Comptes de Résultat</button>
+      <button type="button" class="list-group-item list-group-item-action">Génération de Rapports Personnalisés</button>
+    </div>
+    <div class="list-group mt-3">
+      <h4>Gestion de l'Audit</h4>
+      <button type="button" class="list-group-item list-group-item-action">Gestion des Audits</button>
+    </div>
+    <div class="list-group mt-3">
+      <h4>Stockage des Pièces Comptables</h4>
+      <button type="button" class="list-group-item list-group-item-action">Stockage des Pièces Comptables</button>
+    </div>
   </div>
 </div>

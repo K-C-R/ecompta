@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021010545",
+  "entityTableName": "rapports_personnalises",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contenu",
+      "fieldType": "String"
+    }
+  ],
+  "name": "RapportsPersonnalises",
+  "relationships": [],
+  "searchEngine": "no"
+}

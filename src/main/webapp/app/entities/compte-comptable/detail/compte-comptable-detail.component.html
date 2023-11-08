@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="compteComptable">
+      <h2 data-cy="compteComptableDetailsHeading">
+        <span jhiTranslate="eComptaApp.compteComptable.detail.title"
+          >__jhiTransformTranslate__('eComptaApp.compteComptable.detail.title')</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ compteComptable.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.compteComptable.numero">__jhiTransformTranslate__('eComptaApp.compteComptable.numero')</span>
+        </dt>
+        <dd>
+          <span>{{ compteComptable.numero }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.compteComptable.nom">__jhiTransformTranslate__('eComptaApp.compteComptable.nom')</span></dt>
+        <dd>
+          <span>{{ compteComptable.nom }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.compteComptable.description"
+            >__jhiTransformTranslate__('eComptaApp.compteComptable.description')</span
+          >
+        </dt>
+        <dd>
+          <span>{{ compteComptable.description }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/compte-comptable', compteComptable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

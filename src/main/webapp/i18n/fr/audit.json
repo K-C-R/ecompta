@@ -1,0 +1,28 @@
+{
+  "eComptaApp": {
+    "audit": {
+      "home": {
+        "title": "Audits",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Audit",
+        "createOrEditLabel": "Créer ou éditer un Audit",
+        "notFound": "Aucun Audit trouvé"
+      },
+      "created": "Un nouveau Audit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Audit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Audit avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Audit {{ id }} ?"
+      },
+      "detail": {
+        "title": "Audit"
+      },
+      "id": "ID",
+      "date": "Date",
+      "action": "Action",
+      "entiteModifiee": "Entite Modifiee",
+      "utilisateur": "Utilisateur",
+      "compte": "Compte"
+    }
+  }
+}

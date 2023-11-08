@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="CompteDeResultatHeading">
+    <span jhiTranslate="eComptaApp.compteDeResultat.home.title">__jhiTransformTranslate__('eComptaApp.compteDeResultat.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.compteDeResultat.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.compteDeResultat.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-compte-de-resultat"
+        [routerLink]="['/compte-de-resultat/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.compteDeResultat.home.createLabel"
+          >__jhiTransformTranslate__('eComptaApp.compteDeResultat.home.createLabel')</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="compteDeResultats?.length === 0">
+    <span jhiTranslate="eComptaApp.compteDeResultat.home.notFound"
+      >__jhiTransformTranslate__('eComptaApp.compteDeResultat.home.notFound')</span
+    >
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="compteDeResultats && compteDeResultats.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="exercice">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteDeResultat.exercice"
+                >__jhiTransformTranslate__('eComptaApp.compteDeResultat.exercice')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="produitsTotal">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteDeResultat.produitsTotal"
+                >__jhiTransformTranslate__('eComptaApp.compteDeResultat.produitsTotal')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="chargesTotal">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteDeResultat.chargesTotal"
+                >__jhiTransformTranslate__('eComptaApp.compteDeResultat.chargesTotal')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="resultatNet">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteDeResultat.resultatNet"
+                >__jhiTransformTranslate__('eComptaApp.compteDeResultat.resultatNet')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="resultat.id">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.compteDeResultat.resultat"
+                >__jhiTransformTranslate__('eComptaApp.compteDeResultat.resultat')</span
+              >
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compteDeResultat of compteDeResultats; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/compte-de-resultat', compteDeResultat.id, 'view']">{{ compteDeResultat.id }}</a>
+          </td>
+          <td>{{ compteDeResultat.exercice | formatMediumDatetime }}</td>
+          <td>{{ compteDeResultat.produitsTotal }}</td>
+          <td>{{ compteDeResultat.chargesTotal }}</td>
+          <td>{{ compteDeResultat.resultatNet }}</td>
+          <td>
+            <div *ngIf="compteDeResultat.resultat">
+              <a [routerLink]="['/resultat', compteDeResultat.resultat.id, 'view']">{{ compteDeResultat.resultat.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/compte-de-resultat', compteDeResultat.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/compte-de-resultat', compteDeResultat.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(compteDeResultat)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

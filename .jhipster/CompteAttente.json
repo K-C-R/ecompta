@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021005945",
+  "entityTableName": "compte_attente",
+  "fields": [
+    {
+      "fieldName": "numeroCompte",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "CompteAttente",
+  "relationships": [
+    {
+      "otherEntityField": "compteAttente",
+      "otherEntityName": "compte",
+      "relationshipName": "compte",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

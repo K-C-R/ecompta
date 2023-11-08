@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="transaction">
+      <h2 data-cy="transactionDetailsHeading">
+        <!-- <span jhiTranslate="eComptaApp.transaction.detail.title">__jhiTransformTranslate__('eComptaApp.transaction.detail.title')</span> -->
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ transaction.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.transaction.date">__jhiTransformTranslate__('eComptaApp.transaction.date')</span></dt>
+        <dd>
+          <span>{{ transaction.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.transaction.libelle">__jhiTransformTranslate__('eComptaApp.transaction.libelle')</span></dt>
+        <dd>
+          <span>{{ transaction.libelle }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.transaction.montant">__jhiTransformTranslate__('eComptaApp.transaction.montant')</span></dt>
+        <dd>
+          <span>{{ transaction.montant }}</span>
+        </dd>
+        <dt><span>Compte crediter</span></dt>
+        <dd>
+          <div *ngIf="transaction.compteCrediter">
+            <a [routerLink]="['/compte', transaction.compteCrediter.id, 'view']">{{ transaction.compteCrediter.nom }}</a>
+          </div>
+        </dd>
+        <dt><span>Compte debiter</span></dt>
+        <dd>
+          <div *ngIf="transaction.compteCrediter">
+            <a [routerLink]="['/compte', transaction.compteDebiter!.id, 'view']">{{ transaction.compteDebiter!.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/transaction', transaction.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

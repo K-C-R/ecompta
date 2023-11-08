@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20231021010245",
+  "entityTableName": "bilan",
+  "fields": [
+    {
+      "fieldName": "exercice",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "actifTotal",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "passifTotal",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Bilan",
+  "relationships": [
+    {
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "bilan",
+      "relationshipName": "compte",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,90 @@
+entity Compte {
+    numeroCompte String
+    nom String
+    description String
+}
+
+entity Transaction {
+    date Instant
+    libelle String
+    montant Long
+}
+entity CompteAttente {
+    numeroCompte String
+    nom String
+    description String
+}
+
+entity CompteTransfert {
+    numeroCompte String
+    nom String
+    description String
+}
+entity SoldeComptable {
+    solde Long
+}
+entity Bilan {
+    exercice Instant
+    actifTotal Long
+    passifTotal Long
+}
+entity CompteDeResultat {
+    exercice Instant
+    produitsTotal Long
+    chargesTotal Long
+    resultatNet Long
+}
+entity Resultat {
+    exercice Instant
+    resultatNet Long
+}
+entity RapportsPersonnalises {
+    nom String
+    description String
+    contenu String
+}
+entity Audit {
+    date Instant
+    action String
+    entiteModifiee String
+    utilisateur String
+}
+relationship OneToMany {
+    Compte to Transaction{compte(transaction)}
+}
+
+relationship OneToMany {
+    Compte{soldeComptable} to SoldeComptable{compte}
+}
+relationship OneToMany {
+    Compte to CompteAttente{compte(compteAttente)}
+}
+
+relationship OneToMany {
+    Compte to CompteTransfert{compte(compteTransfert)}
+}
+relationship OneToMany {
+    Bilan to Compte{bilan(compte)}
+}
+
+
+
+relationship OneToMany {
+    Resultat{comptesDeResultat} to CompteDeResultat{resultat}
+}
+
+relationship OneToMany {
+    Compte to Audit{compte(audit)}
+}
+entity PieceComptable {
+    numeroPiece String
+    datePiece Instant
+    description String
+}
+relationship ManyToMany {
+    PieceComptable{comptes(compte)} to Compte
+}
+
+relationship ManyToMany {
+    PieceComptable{transactions(transaction)} to Transaction
+}

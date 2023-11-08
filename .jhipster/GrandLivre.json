@@ -1,0 +1,44 @@
+{
+  "changelogDate": "20231023223319",
+  "entityTableName": "grand_livre",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "montant",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    }
+  ],
+  "name": "GrandLivre",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "compte",
+      "relationshipName": "compte",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "balance",
+      "relationshipName": "balance",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "no"
+}

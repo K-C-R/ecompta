@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="AuditHeading">
+    <span jhiTranslate="eComptaApp.audit.home.title">__jhiTransformTranslate__('eComptaApp.audit.home.title')</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eComptaApp.audit.home.refreshListLabel"
+          >__jhiTransformTranslate__('eComptaApp.audit.home.refreshListLabel')</span
+        >
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-audit"
+        [routerLink]="['/audit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eComptaApp.audit.home.createLabel">__jhiTransformTranslate__('eComptaApp.audit.home.createLabel')</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="audits?.length === 0">
+    <span jhiTranslate="eComptaApp.audit.home.notFound">__jhiTransformTranslate__('eComptaApp.audit.home.notFound')</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="audits && audits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.audit.date">__jhiTransformTranslate__('eComptaApp.audit.date')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="action">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.audit.action">__jhiTransformTranslate__('eComptaApp.audit.action')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="entiteModifiee">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.audit.entiteModifiee">__jhiTransformTranslate__('eComptaApp.audit.entiteModifiee')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="utilisateur">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.audit.utilisateur">__jhiTransformTranslate__('eComptaApp.audit.utilisateur')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compte.audit">
+            <div class="d-flex">
+              <span jhiTranslate="eComptaApp.audit.compte">__jhiTransformTranslate__('eComptaApp.audit.compte')</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let audit of audits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/audit', audit.id, 'view']">{{ audit.id }}</a>
+          </td>
+          <td>{{ audit.date | formatMediumDatetime }}</td>
+          <td>{{ audit.action }}</td>
+          <td>{{ audit.entiteModifiee }}</td>
+          <td>{{ audit.utilisateur }}</td>
+          <td>
+            <div *ngIf="audit.compte">
+              <a [routerLink]="['/compte', audit.compte.id, 'view']">{{ audit.compte.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/audit', audit.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">__jhiTransformTranslate__('entity.action.view')</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/audit', audit.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">__jhiTransformTranslate__('entity.action.edit')</span>
+              </button>
+
+              <button type="submit" (click)="delete(audit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete"
+                  >__jhiTransformTranslate__('entity.action.delete')</span
+                >
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

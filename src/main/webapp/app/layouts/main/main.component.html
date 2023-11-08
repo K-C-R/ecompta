@@ -1,4 +1,4 @@
-<jhi-page-ribbon></jhi-page-ribbon>
+<!-- <jhi-page-ribbon></jhi-page-ribbon>
 
 <div>
   <router-outlet name="navbar"></router-outlet>
@@ -10,4 +10,17 @@
   </div>
 
   <jhi-footer></jhi-footer>
+</div> -->
+<div class="layout-wrapper" [ngClass]="containerClass">
+  <jhi-app-topbar></jhi-app-topbar>
+  <div class="layout-sidebar" *ngIf="isAuthenticated()">
+    <jhi-app-sidebar></jhi-app-sidebar>
+  </div>
+  <div class="layout-main-container">
+    <div class="layout-main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- <jhi-app-config></jhi-app-config>
+  <div class="layout-mask"></div> -->
 </div>

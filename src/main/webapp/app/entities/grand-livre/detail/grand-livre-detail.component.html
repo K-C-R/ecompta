@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="grandLivre">
+      <h2 data-cy="grandLivreDetailsHeading">
+        <span jhiTranslate="eComptaApp.grandLivre.detail.title">__jhiTransformTranslate__('eComptaApp.grandLivre.detail.title')</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">__jhiTransformTranslate__('global.field.id')</span></dt>
+        <dd>
+          <span>{{ grandLivre.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.grandLivre.date">__jhiTransformTranslate__('eComptaApp.grandLivre.date')</span></dt>
+        <dd>
+          <span>{{ grandLivre.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="eComptaApp.grandLivre.description">__jhiTransformTranslate__('eComptaApp.grandLivre.description')</span>
+        </dt>
+        <dd>
+          <span>{{ grandLivre.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.grandLivre.montant">__jhiTransformTranslate__('eComptaApp.grandLivre.montant')</span></dt>
+        <dd>
+          <span>{{ grandLivre.montant }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.grandLivre.reference">__jhiTransformTranslate__('eComptaApp.grandLivre.reference')</span></dt>
+        <dd>
+          <span>{{ grandLivre.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.grandLivre.compte">__jhiTransformTranslate__('eComptaApp.grandLivre.compte')</span></dt>
+        <dd>
+          <div *ngIf="grandLivre.compte">
+            <a [routerLink]="['/compte', grandLivre.compte.id, 'view']">{{ grandLivre.compte.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eComptaApp.grandLivre.balance">__jhiTransformTranslate__('eComptaApp.grandLivre.balance')</span></dt>
+        <dd>
+          <div *ngIf="grandLivre.balance">
+            <a [routerLink]="['/balance', grandLivre.balance.id, 'view']">{{ grandLivre.balance.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"
+          >__jhiTransformTranslate__('entity.action.back')</span
+        >
+      </button>
+
+      <button type="button" [routerLink]="['/grand-livre', grandLivre.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"
+          >__jhiTransformTranslate__('entity.action.edit')</span
+        >
+      </button>
+    </div>
+  </div>
+</div>
